@@ -15,11 +15,11 @@ export function detectLanguage(question: string): AnswerLanguage {
 export function languageInstruction(language: AnswerLanguage): string {
   switch (language) {
     case "zh":
-      return "请使用中文回答。";
+      return "四个小标题保持中文。结论、提示、依据用中文。对外口径推荐回答也用中文。";
     case "en":
-      return "Answer in English. Keep product names, citations, status labels, and the fixed internal-only warning in their original wording.";
+      return "Keep the four headings in Chinese (结论 / 对外口径推荐回答 / 提示 / 依据). Write only the 对外口径推荐回答 paragraph in English. 结论 and 提示 stay in Chinese.";
     case "nl":
-      return "Antwoord in het Nederlands. Houd productnamen, citaties, statuslabels en de vaste interne waarschuwing in de oorspronkelijke formulering.";
+      return "Houd de vier kopjes in het Chinees (结论 / 对外口径推荐回答 / 提示 / 依据). Schrijf alleen de alinea onder 对外口径推荐回答 in het Nederlands. 结论 en 提示 blijven Chinees.";
     default: {
       const neverLanguage: never = language;
       return neverLanguage;

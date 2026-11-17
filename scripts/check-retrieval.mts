@@ -2,10 +2,12 @@ import fs from "fs";
 import assert from "node:assert/strict";
 import { passwordMatches, sessionTokenForPassword, verifySessionToken } from "../lib/auth.ts";
 import { buildDeepSeekBody, DEEPSEEK_MODEL, DEEPSEEK_URL, postChatCompletions, readDeepSeekDeltas } from "../lib/deepseek.ts";
-import { buildIndex, search } from "../lib/retrieve.ts";
+import { detectLanguage } from "../lib/language.ts";
+import { answerSection, buildMockAnswer } from "../lib/mock-answer.ts";
+import { buildIndex, search, type ScoredEntry } from "../lib/retrieve.ts";
 import { parseRules } from "../lib/rules.ts";
 import { classifyStatus, internalOnlyNote } from "../lib/status.ts";
-import type { KnowledgeEntry } from "../lib/types.ts";
+import type { KnowledgeEntry, PublicSource } from "../lib/types.ts";
 
 const entries = JSON.parse(fs.readFileSync(new URL("../data/knowledge.json", import.meta.url), "utf8")) as KnowledgeEntry[];
 assert.equal(entries.length, 273);
@@ -109,5 +111,79 @@ await readDeepSeekDeltas(stream, (text) => {
   delta += text;
 });
 assert.equal(delta, "结论");
+
+const prompt = fs.readFileSync(new URL("../lib/prompt.ts", import.meta.url), "utf8");
+assert.ok(prompt.includes("对外口径推荐回答"));
+assert.ok(prompt.includes("内部，勿对外"));
+assert.ok(!prompt.includes("先给结论，再写说明"));
+
+function asPublic(hit: ScoredEntry): PublicSource {
+  const view = classifyStatus(hit.status, hit.date, hit.text);
+  return {
+    uid: hit.uid,
+    id: hit.id,
+    sourceType: hit.source_type,
+    title: hit.title,
+    text: hit.text,
+    source: hit.source,
+    date: hit.date,
+    status: hit.status,
+    notes: hit.notes,
+    ref: hit.ref,
+    topic: hit.topic,
+    label: view.label,
+    kind: view.kind,
+    internalOnly: view.internalOnly,
+    timeSensitive: view.timeSensitive,
+    score: hit.score,
+  };
+}
+
+function draft(question: string): string {
+  const language = detectLanguage(question);
+  const sources = search(index, question, 8).map(asPublic);
+  const text = buildMockAnswer(language, question, sources);
+  console.log(`\n---- ${question} (${language}) ----\n${text}`);
+  assert.ok(text.includes("\n结论\n"), question);
+  assert.ok(text.includes("\n对外口径推荐回答\n"), question);
+  assert.ok(text.includes("\n依据\n"), question);
+  assert.ok(!text.includes("适用条件或限制"), question);
+  assert.ok(!text.includes(internalOnlyNote()), question);
+  const tips = answerSection(text, "提示");
+  const bullets = tips ? tips.split("\n").filter((line) => line.startsWith("- ")) : [];
+  assert.ok(bullets.length <= 3, `${question} tips ${bullets.length}`);
+  assert.ok(text.length < 1400, `${question} still verbose (${text.length})`);
+  return text;
+}
+
+const powerDraft = draft("800W 是否只限制放电");
+assert.match(answerSection(powerDraft, "结论"), /有条件结论/);
+assert.match(answerSection(powerDraft, "对外口径推荐回答"), /只限制放电/);
+assert.match(answerSection(powerDraft, "对外口径推荐回答"), /2026-11-14/);
+assert.match(answerSection(powerDraft, "依据"), /D131 · 2026-11-14 · 有条件结论/);
+assert.match(answerSection(powerDraft, "提示"), /内部，勿对外/);
+
+const networkDraft = draft("P1 需要什么网络");
+assert.match(answerSection(networkDraft, "对外口径推荐回答"), /2\.4 GHz Wi-Fi/);
+assert.match(answerSection(networkDraft, "对外口径推荐回答"), /2026-11-11/);
+
+const priceDraft = draft("4 kWh 价格多少");
+assert.match(answerSection(priceDraft, "对外口径推荐回答"), /1,399/);
+assert.match(answerSection(priceDraft, "对外口径推荐回答"), /2026-11-11/);
+assert.match(answerSection(priceDraft, "结论"), /有条件结论/);
+
+const coldDraft = draft("低温能充电吗");
+const coldExternal = answerSection(coldDraft, "对外口径推荐回答");
+assert.match(coldExternal, /0℃/);
+assert.match(answerSection(coldDraft, "结论"), /已确认/);
+assert.ok(!coldExternal.includes("禁充禁放"), coldExternal);
+assert.match(answerSection(coldDraft, "提示"), /内部，勿对外/);
+
+const dutchDraft = draft("Wat is de prijs van 4 kWh?");
+assert.equal(detectLanguage("Wat is de prijs van 4 kWh?"), "nl");
+const dutchExternal = answerSection(dutchDraft, "对外口径推荐回答");
+assert.match(dutchExternal, /Per 11 november 2026/);
+assert.match(dutchExternal, /btw/);
+assert.ok(!/[\u4e00-\u9fff]/.test(dutchExternal), dutchExternal);
 
 console.log("\nchecks passed");

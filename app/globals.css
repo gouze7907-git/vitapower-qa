@@ -208,7 +208,17 @@ textarea:focus-visible, input:focus-visible {
   box-shadow: var(--shadow);
 }
 
-.answer-body { white-space: pre-wrap; word-break: break-word; }
+.answer-body { white-space: normal; word-break: break-word; }
+.answer-heading {
+  margin: 12px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.answer-body .answer-heading:first-child { margin-top: 0; }
+.answer-line, .answer-bullet { margin: 0 0 6px; line-height: 1.6; }
+.answer-gap { height: 4px; }
 
 .mock-flag, .pending-line, .source-empty {
   margin: 0 0 8px;
