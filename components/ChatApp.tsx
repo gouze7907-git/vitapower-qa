@@ -107,22 +107,14 @@ export function ChatApp({ banner }: { banner: string }) {
     }
   }
 
-  async function logout() {
-    await fetch("/api/logout", { method: "POST" });
-    router.refresh();
-  }
-
   return (
     <div className="app">
       <header className="topbar">
         <div>
-          <p className="eyebrow">AlphaESS · 荷兰市场</p>
+          <p className="eyebrow">内部工具 · 荷兰市场</p>
           <h1>VitaPower 内部问答</h1>
           <p className="subhead">VitaPower 3600 AC + VitaMate 4000 · 只依据知识库</p>
         </div>
-        <button type="button" className="ghost" onClick={() => void logout()}>
-          退出
-        </button>
       </header>
       {banner ? <p className="banner">{banner}</p> : null}
       <div className="thread">

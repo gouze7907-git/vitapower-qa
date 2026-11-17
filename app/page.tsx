@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { ChatApp } from "@/components/ChatApp";
 import { Footer } from "@/components/Footer";
 import { LoginGate } from "@/components/LoginGate";
+import { SiteHeader } from "@/components/SiteHeader";
 import { verifySessionToken } from "@/lib/auth";
 import { getIndex } from "@/lib/knowledge";
 import { loadRules } from "@/lib/rules";
@@ -17,6 +18,7 @@ export default async function Page() {
 
   return (
     <div className="shell">
+      <SiteHeader showLogout={authed} />
       {authed ? <ChatApp banner={rules.banner} /> : <LoginGate banner={rules.banner} />}
       <Footer rules={rules} loadedCount={loadedCount} />
     </div>
