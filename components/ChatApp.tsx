@@ -167,18 +167,34 @@ export function ChatApp({ banner }: { banner: string }) {
   );
 }
 
+const ANSWER_HEADINGS = new Set(["结论", "对外口径推荐回答", "提示", "依据"]);
+
 function RichText({ text }: { text: string }) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  const lines = text.split("\n");
   return (
     <div className="answer-body">
-      {parts.map((part, index) =>
-        part.startsWith("**") && part.endsWith("**") && part.length >= 4 ? (
-          <strong key={index}>{part.slice(2, -2)}</strong>
-        ) : (
-          <span key={index}>{part}</span>
-        ),
-      )}
+      {lines.map((line, index) => {
+        const trimmed = line.trim();
+        if (!trimmed) return <div key={index} className="answer-gap" />;
+        if (ANSWER_HEADINGS.has(trimmed)) return <p key={index} className="answer-heading">{trimmed}</p>;
+        return (
+          <p key={index} className={trimmed.startsWith("- ") ? "answer-bullet" : "answer-line"}>
+            {inline(trimmed)}
+          </p>
+        );
+      })}
     </div>
+  );
+}
+
+function inline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") && part.length >= 4 ? (
+      <strong key={index}>{part.slice(2, -2)}</strong>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
   );
 }
 
