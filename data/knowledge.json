@@ -3088,7 +3088,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "混合（文内已分开）",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "确认问答 D113（2026-10-28）；来源飞书 VP-44，用户 2026-10-28 授权归档",
     "topic": "运行环境、效率与能耗",
     "blocks": [
@@ -3534,7 +3534,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "尚未确认",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "飞书 KOL 问题反馈中的研发答复（常规约 30–40 W）；确认问答 D113（2026-10-28）：4 kWh 效率与低功耗模式规划；不要再用旧 FAQ 约 12 W",
     "topic": "待确认问答",
     "blocks": [
@@ -4034,6 +4034,141 @@
       ]
     ],
     "uid": "chat:080"
+  },
+  {
+    "id": "D132",
+    "source_type": "chat",
+    "title": "低功耗待机的进入条件",
+    "text": "Q1. Under what conditions does the VitaPower enter low-power standby mode?\nA: The VitaPower enters low-power standby mode when there is no charging or discharging demand and no load for a continuous period of 30 minutes.\n【中文摘要】\n连续 30 分钟没有充放电需求且没有负载时进入。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D132（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q1. Under what conditions does the VitaPower enter low-power standby mode?\nA: The VitaPower enters low-power standby mode when there is no charging or discharging demand and no load for a continuous period of 30 minutes."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "连续 30 分钟没有充放电需求且没有负载时进入。"
+      ]
+    ],
+    "uid": "chat:081"
+  },
+  {
+    "id": "D133",
+    "source_type": "chat",
+    "title": "低功耗待机功耗大约多少",
+    "text": "Q2. What is the expected power consumption in low-power standby mode?\nA: The expected power consumption is approximately 10 W.\n【中文摘要】\n约 10 W。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。\n约 10 W 为答复给出的预期值，不是实测规格。",
+    "ref": "对话同步 D133（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q2. What is the expected power consumption in low-power standby mode?\nA: The expected power consumption is approximately 10 W."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "约 10 W。"
+      ]
+    ],
+    "uid": "chat:082"
+  },
+  {
+    "id": "D134",
+    "source_type": "chat",
+    "title": "Modbus 或外部控制是否阻止低功耗待机",
+    "text": "Q3. Does Modbus communication or external control prevent the VitaPower from entering low-power standby mode?\nA: No. Modbus communication or external control does not inherently prevent the system from entering low-power standby mode. However, if the system receives charging or discharging demands, or detects a load, it will not meet the standby conditions.\n【中文摘要】\n不会。Modbus 通信或外部控制本身不阻止进入低功耗待机；但如果收到充放电需求或检测到负载，就不满足待机条件。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D134（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q3. Does Modbus communication or external control prevent the VitaPower from entering low-power standby mode?\nA: No. Modbus communication or external control does not inherently prevent the system from entering low-power standby mode. However, if the system receives charging or discharging demands, or detects a load, it will not meet the standby conditions."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "不会。Modbus 通信或外部控制本身不阻止进入低功耗待机；但如果收到充放电需求或检测到负载，就不满足待机条件。"
+      ]
+    ],
+    "uid": "chat:083"
+  },
+  {
+    "id": "D135",
+    "source_type": "chat",
+    "title": "有没有 Modbus 寄存器可手动开关低功耗待机",
+    "text": "Q4. Is there a dedicated Modbus register to manually enable or disable low-power standby mode?\nA: No. Currently, there is no dedicated Modbus register address for manually enabling or disabling this mode. The system automatically enters or exits low-power standby mode based on its operating conditions.\n【中文摘要】\n没有。目前没有专门的 Modbus 寄存器可手动开启或关闭该模式，系统按运行条件自动进入或退出。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D135（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q4. Is there a dedicated Modbus register to manually enable or disable low-power standby mode?\nA: No. Currently, there is no dedicated Modbus register address for manually enabling or disabling this mode. The system automatically enters or exits low-power standby mode based on its operating conditions."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "没有。目前没有专门的 Modbus 寄存器可手动开启或关闭该模式，系统按运行条件自动进入或退出。"
+      ]
+    ],
+    "uid": "chat:084"
+  },
+  {
+    "id": "D136",
+    "source_type": "chat",
+    "title": "Home Assistant / Modbus 控制时能否进入低功耗待机",
+    "text": "Q5. Can the VitaPower enter low-power standby mode while being controlled via Home Assistant / Modbus?\nA: Yes. The VitaPower can still enter low-power standby mode while being controlled via Home Assistant / Modbus, provided that there is no charging or discharging demand and no load for a continuous period of 30 minutes.\n【中文摘要】\n可以。经 Home Assistant / Modbus 控制时，只要连续 30 分钟没有充放电需求且没有负载，仍可进入低功耗待机。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。\n这里的 Home Assistant 指用户通过 Modbus 自行接入 HA，不等于官方 HA 集成；D104/D114 \"暂不支持 Home Assistant 和本地 API\" 仍有效。",
+    "ref": "对话同步 D136（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q5. Can the VitaPower enter low-power standby mode while being controlled via Home Assistant / Modbus?\nA: Yes. The VitaPower can still enter low-power standby mode while being controlled via Home Assistant / Modbus, provided that there is no charging or discharging demand and no load for a continuous period of 30 minutes."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "可以。经 Home Assistant / Modbus 控制时，只要连续 30 分钟没有充放电需求且没有负载，仍可进入低功耗待机。"
+      ]
+    ],
+    "uid": "chat:085"
   },
   {
     "id": "D64",
@@ -5515,7 +5650,7 @@
     "source": "确认问答表（Vitapower FAQ 表）",
     "date": "2026-10-28",
     "status": "已确认（确认问答表）",
-    "notes": "研发答疑（飞书）VP-44；用户2026-10-28授权整理归档",
+    "notes": "研发答疑（飞书）VP-44；用户2026-10-28授权整理归档\n2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "确认问答 D113",
     "topic": "效率与待机",
     "blocks": [
@@ -8693,7 +8828,7 @@
     "source": "飞书 KOL问题反馈表",
     "date": "10/26/2026",
     "status": "研发答复·未写入确认表",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "飞书 KOL问题反馈",
     "topic": "待机功耗",
     "blocks": [
