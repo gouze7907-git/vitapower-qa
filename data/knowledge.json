@@ -1969,7 +1969,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "已确认",
-    "notes": "",
+    "notes": "2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D128（2026-10-28）；来源飞书 VP-54，用户 2026-10-28 授权归档",
     "topic": "App、模式与控制",
     "blocks": [
@@ -2212,7 +2212,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "已确认",
-    "notes": "",
+    "notes": "2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D127（2026-10-28）；来源飞书 VP-54，用户 2026-10-28 授权归档",
     "topic": "App、模式与控制",
     "blocks": [
@@ -2261,7 +2261,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "已确认",
-    "notes": "",
+    "notes": "2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D87（2026-10-22）；来源飞书 VP-22，用户授权归档",
     "topic": "App、模式与控制",
     "blocks": [
@@ -3088,7 +3088,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "混合（文内已分开）",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "确认问答 D113（2026-10-28）；来源飞书 VP-44，用户 2026-10-28 授权归档",
     "topic": "运行环境、效率与能耗",
     "blocks": [
@@ -3534,7 +3534,7 @@
     "source": "知识库 FAQ（Cortex · VitaPower knowledge / Q&A）",
     "date": "2026-11-14",
     "status": "尚未确认",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "飞书 KOL 问题反馈中的研发答复（常规约 30–40 W）；确认问答 D113（2026-10-28）：4 kWh 效率与低功耗模式规划；不要再用旧 FAQ 约 12 W",
     "topic": "待确认问答",
     "blocks": [
@@ -4034,6 +4034,456 @@
       ]
     ],
     "uid": "chat:080"
+  },
+  {
+    "id": "D132",
+    "source_type": "chat",
+    "title": "低功耗待机的进入条件",
+    "text": "Q1. Under what conditions does the VitaPower enter low-power standby mode?\nA: The VitaPower enters low-power standby mode when there is no charging or discharging demand and no load for a continuous period of 30 minutes.\n【中文摘要】\n连续 30 分钟没有充放电需求且没有负载时进入。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D132（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q1. Under what conditions does the VitaPower enter low-power standby mode?\nA: The VitaPower enters low-power standby mode when there is no charging or discharging demand and no load for a continuous period of 30 minutes."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "连续 30 分钟没有充放电需求且没有负载时进入。"
+      ]
+    ],
+    "uid": "chat:081"
+  },
+  {
+    "id": "D133",
+    "source_type": "chat",
+    "title": "低功耗待机功耗大约多少",
+    "text": "Q2. What is the expected power consumption in low-power standby mode?\nA: The expected power consumption is approximately 10 W.\n【中文摘要】\n约 10 W。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。\n约 10 W 为答复给出的预期值，不是实测规格。",
+    "ref": "对话同步 D133（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q2. What is the expected power consumption in low-power standby mode?\nA: The expected power consumption is approximately 10 W."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "约 10 W。"
+      ]
+    ],
+    "uid": "chat:082"
+  },
+  {
+    "id": "D134",
+    "source_type": "chat",
+    "title": "Modbus 或外部控制是否阻止低功耗待机",
+    "text": "Q3. Does Modbus communication or external control prevent the VitaPower from entering low-power standby mode?\nA: No. Modbus communication or external control does not inherently prevent the system from entering low-power standby mode. However, if the system receives charging or discharging demands, or detects a load, it will not meet the standby conditions.\n【中文摘要】\n不会。Modbus 通信或外部控制本身不阻止进入低功耗待机；但如果收到充放电需求或检测到负载，就不满足待机条件。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D134（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q3. Does Modbus communication or external control prevent the VitaPower from entering low-power standby mode?\nA: No. Modbus communication or external control does not inherently prevent the system from entering low-power standby mode. However, if the system receives charging or discharging demands, or detects a load, it will not meet the standby conditions."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "不会。Modbus 通信或外部控制本身不阻止进入低功耗待机；但如果收到充放电需求或检测到负载，就不满足待机条件。"
+      ]
+    ],
+    "uid": "chat:083"
+  },
+  {
+    "id": "D135",
+    "source_type": "chat",
+    "title": "有没有 Modbus 寄存器可手动开关低功耗待机",
+    "text": "Q4. Is there a dedicated Modbus register to manually enable or disable low-power standby mode?\nA: No. Currently, there is no dedicated Modbus register address for manually enabling or disabling this mode. The system automatically enters or exits low-power standby mode based on its operating conditions.\n【中文摘要】\n没有。目前没有专门的 Modbus 寄存器可手动开启或关闭该模式，系统按运行条件自动进入或退出。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。",
+    "ref": "对话同步 D135（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q4. Is there a dedicated Modbus register to manually enable or disable low-power standby mode?\nA: No. Currently, there is no dedicated Modbus register address for manually enabling or disabling this mode. The system automatically enters or exits low-power standby mode based on its operating conditions."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "没有。目前没有专门的 Modbus 寄存器可手动开启或关闭该模式，系统按运行条件自动进入或退出。"
+      ]
+    ],
+    "uid": "chat:084"
+  },
+  {
+    "id": "D136",
+    "source_type": "chat",
+    "title": "Home Assistant / Modbus 控制时能否进入低功耗待机",
+    "text": "Q5. Can the VitaPower enter low-power standby mode while being controlled via Home Assistant / Modbus?\nA: Yes. The VitaPower can still enter low-power standby mode while being controlled via Home Assistant / Modbus, provided that there is no charging or discharging demand and no load for a continuous period of 30 minutes.\n【中文摘要】\n可以。经 Home Assistant / Modbus 控制时，只要连续 30 分钟没有充放电需求且没有负载，仍可进入低功耗待机。",
+    "source": "用户 2026-11-23 对话同步的官方答复",
+    "date": "2026-11-23",
+    "status": "已确认",
+    "notes": "答复未说明低功耗模式对应的固件版本或是否已正式发布（旧口径 D113 为预计 2026 年 12 月初发布）；对外引用时带上 2026-11-23 日期。\n这里的 Home Assistant 指用户通过 Modbus 自行接入 HA，不等于官方 HA 集成；D104/D114 \"暂不支持 Home Assistant 和本地 API\" 仍有效。",
+    "ref": "对话同步 D136（2026-11-23）",
+    "topic": "低功耗待机 / Modbus",
+    "blocks": [
+      [
+        "p",
+        "Q5. Can the VitaPower enter low-power standby mode while being controlled via Home Assistant / Modbus?\nA: Yes. The VitaPower can still enter low-power standby mode while being controlled via Home Assistant / Modbus, provided that there is no charging or discharging demand and no load for a continuous period of 30 minutes."
+      ],
+      [
+        "h",
+        "中文摘要"
+      ],
+      [
+        "p",
+        "可以。经 Home Assistant / Modbus 控制时，只要连续 30 分钟没有充放电需求且没有负载，仍可进入低功耗待机。"
+      ]
+    ],
+    "uid": "chat:085"
+  },
+  {
+    "id": "D137",
+    "source_type": "chat",
+    "title": "如何接入 FlatPeak 电价",
+    "text": "对外状态：有条件结论\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\nEnergy Life 接入 FlatPeak 电价有两个入口：首页右上角设置中的电价设置页，以及开启电价控制模式时出现的引导入口。注册时填写的地址（国家/地区和邮编）会预填，可以修改，也可以通过定位校准，用来匹配当地电价。FlatPeak 会列出该地区的供应商；部分供应商需要用户用 OAuth 登录自己的能源账户。填完买电价后，会提示是否设置卖电价。这一步卖电价可以先不填，但电价控制模式和 AI Mode 都要求同时具备买电价和卖电价。\n【适用条件或限制】\n- 清单中没有的供应商可以手动填写电价，但手动电价不能驱动 AI。已确认口径 D127、D128 仍然有效。\n- 本条依据 2026-09-08 演示评审会 AI 纪要。对外引用须带上该日期，并核对当前 Energy Life App 是否仍是这一流程。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "有条件结论",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "App、模式与控制",
+    "blocks": [
+      [
+        "p",
+        "对外状态：有条件结论"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "Energy Life 接入 FlatPeak 电价有两个入口：首页右上角设置中的电价设置页，以及开启电价控制模式时出现的引导入口。注册时填写的地址（国家/地区和邮编）会预填，可以修改，也可以通过定位校准，用来匹配当地电价。FlatPeak 会列出该地区的供应商；部分供应商需要用户用 OAuth 登录自己的能源账户。填完买电价后，会提示是否设置卖电价。这一步卖电价可以先不填，但电价控制模式和 AI Mode 都要求同时具备买电价和卖电价。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "清单中没有的供应商可以手动填写电价，但手动电价不能驱动 AI。已确认口径 D127、D128 仍然有效。",
+          "本条依据 2026-09-08 演示评审会 AI 纪要。对外引用须带上该日期，并核对当前 Energy Life App 是否仍是这一流程。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:086"
+  },
+  {
+    "id": "D138",
+    "source_type": "chat",
+    "title": "接入 FlatPeak 后显示与更换供应商",
+    "text": "对外状态：有条件结论\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\n接入 FlatPeak 后，页面显示实时买电价和卖电价，以及今天和明天按 15 分钟一段的电价曲线。供应商可以手动更换或解绑。用户地址变更时，会弹出对话框，询问是按新地址同步设置，还是保留现有设置。\n【适用条件或限制】\n- 实时价格和曲线以当时接入的供应商及当前 App 版本为准。\n- 本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 App。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "有条件结论",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "App、模式与控制",
+    "blocks": [
+      [
+        "p",
+        "对外状态：有条件结论"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "接入 FlatPeak 后，页面显示实时买电价和卖电价，以及今天和明天按 15 分钟一段的电价曲线。供应商可以手动更换或解绑。用户地址变更时，会弹出对话框，询问是按新地址同步设置，还是保留现有设置。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "实时价格和曲线以当时接入的供应商及当前 App 版本为准。",
+          "本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 App。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:087"
+  },
+  {
+    "id": "D139",
+    "source_type": "chat",
+    "title": "电价控制模式规则",
+    "text": "对外状态：有条件结论\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\n电价控制模式要求完成 FlatPeak 买电价和卖电价的完整接入，否则只给出引导提示。系统把当天 96 个 15 分钟电价点分成低、正常、高三档；每一档由用户设置充放电动作、功率和截止 SOC。可以选择在负电价时从电网充电。馈网默认关闭，放电优先供给家庭负载；打开馈网后，可以设置最低馈网电价，避免在负电价时向外送电。页面提供泳道图，左侧是已执行记录，右侧是预测计划。首页显示当前电价档和实时电价。调度日志可以按日期和对象筛选。\n【适用条件或限制】\n- 运行模式为单选，同一时间只能启用一种（确认问答 D87）。\n- 馈网必须同时遵守已确认的 800 W 插电限制、解锁后的功率上限，以及荷兰电网规则。\n- 本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 Energy Life App。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "有条件结论",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "App、模式与控制",
+    "blocks": [
+      [
+        "p",
+        "对外状态：有条件结论"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "电价控制模式要求完成 FlatPeak 买电价和卖电价的完整接入，否则只给出引导提示。系统把当天 96 个 15 分钟电价点分成低、正常、高三档；每一档由用户设置充放电动作、功率和截止 SOC。可以选择在负电价时从电网充电。馈网默认关闭，放电优先供给家庭负载；打开馈网后，可以设置最低馈网电价，避免在负电价时向外送电。页面提供泳道图，左侧是已执行记录，右侧是预测计划。首页显示当前电价档和实时电价。调度日志可以按日期和对象筛选。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "运行模式为单选，同一时间只能启用一种（确认问答 D87）。",
+          "馈网必须同时遵守已确认的 800 W 插电限制、解锁后的功率上限，以及荷兰电网规则。",
+          "本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 Energy Life App。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:088"
+  },
+  {
+    "id": "D140",
+    "source_type": "chat",
+    "title": "AI 模式开启条件与策略",
+    "text": "对外状态：有条件结论\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\nAI 模式要求完成 FlatPeak 买电价和卖电价的完整接入，并且已连接 Grid Meter。策略按买卖电价差优化用电成本。有两种策略：均衡模式和收益最大化模式，可以切换。保存后系统自动生成充放电计划。页面显示买电和卖电曲线、历史和预测 SOC，以及已连接的供应商和电价标签。\n【适用条件或限制】\n- 纪要中的 Grid Meter 对 VitaPower 是否就是已连接的 P1 电表，尚未确认，不要写成已经等同。\n- 只在 AI 详情页保存配置不会启动 AI 模式；必须回到模式列表选择 AI 并保存（确认问答 D87）。\n- 不要对外给出节省金额或百分比（见 D142，尚未确认）。\n- 本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 App。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "有条件结论",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "App、模式与控制",
+    "blocks": [
+      [
+        "p",
+        "对外状态：有条件结论"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "AI 模式要求完成 FlatPeak 买电价和卖电价的完整接入，并且已连接 Grid Meter。策略按买卖电价差优化用电成本。有两种策略：均衡模式和收益最大化模式，可以切换。保存后系统自动生成充放电计划。页面显示买电和卖电曲线、历史和预测 SOC，以及已连接的供应商和电价标签。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "纪要中的 Grid Meter 对 VitaPower 是否就是已连接的 P1 电表，尚未确认，不要写成已经等同。",
+          "只在 AI 详情页保存配置不会启动 AI 模式；必须回到模式列表选择 AI 并保存（确认问答 D87）。",
+          "不要对外给出节省金额或百分比（见 D142，尚未确认）。",
+          "本条依据 2026-09-08 演示评审会 AI 纪要，对外引用须带上日期，并核实现网 App。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:089"
+  },
+  {
+    "id": "D141",
+    "source_type": "chat",
+    "title": "荷兰卖电价 2027 年起变化",
+    "text": "对外状态：有条件结论\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\n按该纪要，荷兰目前买电价和卖电价来自同一供应商，价格相同。自 2027-01-01 起卖电价将发生变化，不再等于买电价，时间上与荷兰 saldering（净计量）结束重合。建议也接入卖电价。\n【适用条件或限制】\n- 这是时效性口径，依据 2026-09-08 演示评审会 AI 纪要。对外引用必须写明日期，并核对是否已有更新的官方说明。\n- 实际馈网电价取决于用户自己的合同。政策细节以官方来源为准，不要把纪要转述写成法规全文。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "有条件结论",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "动态电价",
+    "blocks": [
+      [
+        "p",
+        "对外状态：有条件结论"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "按该纪要，荷兰目前买电价和卖电价来自同一供应商，价格相同。自 2027-01-01 起卖电价将发生变化，不再等于买电价，时间上与荷兰 saldering（净计量）结束重合。建议也接入卖电价。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "这是时效性口径，依据 2026-09-08 演示评审会 AI 纪要。对外引用必须写明日期，并核对是否已有更新的官方说明。",
+          "实际馈网电价取决于用户自己的合同。政策细节以官方来源为准，不要把纪要转述写成法规全文。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:090"
+  },
+  {
+    "id": "D142",
+    "source_type": "chat",
+    "title": "App 是否显示 AI 模式节省金额",
+    "text": "对外状态：尚未确认\n来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对\n【直接结论】\n截至 2026-09-08 的评审，App 不显示 AI 模式节省金额。3.6 kW 机型没有接入光伏模块，因此没有可以准确计算节省的基准。是否以后显示，要等竞品调研后再评估，当时尚未决定。对外可以提到 AI Mode 这个名称，但不要给出节省金额或百分比。\n【适用条件或限制】\n- 是否会上线节省金额显示尚未确认，不得写成现网功能或已排期功能。\n- 本条依据 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对。\n【依据】\n- 飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）",
+    "source": "用户 2026-11-23 提供的飞书会议纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》",
+    "date": "2026-11-23",
+    "status": "尚未确认",
+    "notes": "",
+    "ref": "《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）https://alphaess.feishu.cn/docx/HvLAd6HSwoxQqbxg3S7cn7NEnTh",
+    "topic": "App、模式与控制",
+    "blocks": [
+      [
+        "p",
+        "对外状态：尚未确认"
+      ],
+      [
+        "p",
+        "来源为 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对"
+      ],
+      [
+        "h",
+        "直接结论"
+      ],
+      [
+        "p",
+        "截至 2026-09-08 的评审，App 不显示 AI 模式节省金额。3.6 kW 机型没有接入光伏模块，因此没有可以准确计算节省的基准。是否以后显示，要等竞品调研后再评估，当时尚未决定。对外可以提到 AI Mode 这个名称，但不要给出节省金额或百分比。"
+      ],
+      [
+        "h",
+        "适用条件或限制"
+      ],
+      [
+        "ul",
+        [
+          "是否会上线节省金额显示尚未确认，不得写成现网功能或已排期功能。",
+          "本条依据 2026-09-08 演示评审会 AI 纪要，需以当前 Energy Life App 版本核对。"
+        ]
+      ],
+      [
+        "h",
+        "依据"
+      ],
+      [
+        "ul",
+        [
+          "飞书 AI 纪要《【Energy Life Demo】FlatPeak电价接入 & AI MODE》（2026-09-08 演示评审；用户 2026-11-23 提供）"
+        ]
+      ]
+    ],
+    "uid": "chat:091"
   },
   {
     "id": "D64",
@@ -4740,7 +5190,7 @@
     "source": "确认问答表（Vitapower FAQ 表）",
     "date": "2026-10-22",
     "status": "已确认（确认问答表）",
-    "notes": "用户2026-10-22转交研发答复，并修订确认本条标准问答；2026-10-26用户转交“飞书答疑”并授权整理归档：VP-22（第5行）",
+    "notes": "用户2026-10-22转交研发答复，并修订确认本条标准问答；2026-10-26用户转交“飞书答疑”并授权整理归档：VP-22（第5行）\n2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D87",
     "topic": "App模式",
     "blocks": [
@@ -5515,7 +5965,7 @@
     "source": "确认问答表（Vitapower FAQ 表）",
     "date": "2026-10-28",
     "status": "已确认（确认问答表）",
-    "notes": "研发答疑（飞书）VP-44；用户2026-10-28授权整理归档",
+    "notes": "研发答疑（飞书）VP-44；用户2026-10-28授权整理归档\n2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "确认问答 D113",
     "topic": "效率与待机",
     "blocks": [
@@ -5949,7 +6399,7 @@
     "source": "确认问答表（Vitapower FAQ 表）",
     "date": "2026-10-28",
     "status": "已确认（确认问答表）",
-    "notes": "研发答疑（飞书）VP-54，第69行；用户2026-10-28授权归档",
+    "notes": "研发答疑（飞书）VP-54，第69行；用户2026-10-28授权归档\n2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D127",
     "topic": "动态电价",
     "blocks": [
@@ -5980,7 +6430,7 @@
     "source": "确认问答表（Vitapower FAQ 表）",
     "date": "2026-10-28",
     "status": "已确认（确认问答表）",
-    "notes": "研发答疑（飞书）VP-54，第69行；D83/D84；用户2026-10-28授权归档",
+    "notes": "研发答疑（飞书）VP-54，第69行；D83/D84；用户2026-10-28授权归档\n2026-11-23 纪要补充：电价控制模式与 AI 模式的开启条件见 D139、D140。",
     "ref": "确认问答 D128",
     "topic": "定时与AI",
     "blocks": [
@@ -8693,7 +9143,7 @@
     "source": "飞书 KOL问题反馈表",
     "date": "10/26/2026",
     "status": "研发答复·未写入确认表",
-    "notes": "",
+    "notes": "2026-11-23 新答复：进入条件、约 10 W 及 Modbus 关系见 D132–D136。",
     "ref": "飞书 KOL问题反馈",
     "topic": "待机功耗",
     "blocks": [

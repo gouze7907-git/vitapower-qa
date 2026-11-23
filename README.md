@@ -2,7 +2,7 @@
 
 给内部同事用的单页问答。问题可以是中文、英文或荷兰语，回答只用 `data/knowledge.json` 里的条目，不把知识库以外的产品事实写进去。界面是中文。
 
-覆盖产品：AlphaESS VitaPower 3600 AC 与 VitaMate 4000，荷兰市场。知识库快照日期见 `data/rules.md`（当前为 2026-11-17）。
+覆盖产品：AlphaESS VitaPower 3600 AC 与 VitaMate 4000，荷兰市场。知识库快照日期见 `data/rules.md`（当前为 2026-11-23）。
 
 ## 本地运行
 

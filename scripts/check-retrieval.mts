@@ -10,7 +10,7 @@ import { classifyStatus, internalOnlyNote } from "../lib/status.ts";
 import type { KnowledgeEntry, PublicSource } from "../lib/types.ts";
 
 const entries = JSON.parse(fs.readFileSync(new URL("../data/knowledge.json", import.meta.url), "utf8")) as KnowledgeEntry[];
-assert.equal(entries.length, 273);
+assert.equal(entries.length, 284);
 const index = buildIndex(entries);
 
 function top(query: string, n = 5): string[] {
@@ -41,6 +41,24 @@ assert.ok(homey.slice(0, 3).includes("faq:049"), `homey missed faq:049: ${homey.
 const englishNetwork = top("What network does the P1 dongle need?");
 assert.ok(englishNetwork.includes("faq:047"), `english P1 missed faq:047: ${englishNetwork.join(",")}`);
 
+const standbyEnter = top("低功耗待机 进入条件");
+assert.ok(standbyEnter.includes("chat:081"), `standby entry missed chat:081: ${standbyEnter.join(",")}`);
+
+const modbusStandby = top("Modbus standby");
+assert.ok(
+  modbusStandby.some((uid) => uid === "chat:083" || uid === "chat:084" || uid === "chat:085"),
+  `Modbus standby missed D134–D136: ${modbusStandby.join(",")}`,
+);
+
+const flatpeak = top("如何接入 FlatPeak");
+assert.ok(flatpeak.includes("chat:086"), `FlatPeak entry missed chat:086: ${flatpeak.join(",")}`);
+
+const tariffMode = top("电价控制模式");
+assert.ok(tariffMode.includes("chat:088"), `tariff mode missed chat:088: ${tariffMode.join(",")}`);
+
+const aiSavings = top("AI 模式节省金额");
+assert.ok(aiSavings.includes("chat:091"), `AI savings missed chat:091: ${aiSavings.join(",")}`);
+
 const dutchPrice = top("Wat is de prijs van 4 kWh?");
 assert.ok(
   dutchPrice.some((uid) => uid === "faq:057" || uid === "chat:080"),
@@ -48,7 +66,9 @@ assert.ok(
 );
 
 const rules = parseRules(fs.readFileSync(new URL("../data/rules.md", import.meta.url), "utf8"));
-assert.equal(rules.snapshotDate, "2026-11-17");
+assert.equal(rules.snapshotDate, "2026-11-23");
+assert.ok(rules.sources.some((row) => row.type === "chat" && row.count === "16"));
+assert.ok(rules.sources.some((row) => row.type === "合计" && row.count === "284"));
 assert.equal(rules.rules.length, 5);
 assert.ok(rules.usageNote.includes("未经业务确认"));
 assert.ok(rules.sources.some((row) => row.type === "faq" && row.count === "75"));
